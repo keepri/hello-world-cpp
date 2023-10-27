@@ -53,3 +53,8 @@ class Log {
         // int flag = 1;
         int m_LogLevel = LogLevelInfo; 
 };
+
+Log make_logger() {
+    Log log;
+    return log;
+}
