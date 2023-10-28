@@ -1,12 +1,7 @@
 #include "logger.h"
 #include <iostream>
 
-int add(int x, int y) {
-    return x + y;
-}
-
-void do_logs(Log* log) {
-    log->SetLevel(log->LogLevelInfo);
+void do_logs(Log *log) {
     log->Info("Hello, world!");
 
     int a = std::atoi("1");
@@ -21,8 +16,9 @@ void do_logs(Log* log) {
     }
 }
 
-int main (int argc, char *argv[]) {
-    Log logger = make_logger();
+int main(int argc, char *argv[]) {
+    Log logger;
+    logger.SetLevel(Log::LogLevelDebug);
     do_logs(&logger);
     return 0;
 }
