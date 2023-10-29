@@ -4,10 +4,20 @@
 #include <iostream>
 
 class Log {
-    public:
-        typedef int Level;
+    typedef int Level;
+    typedef const char* Header;
 
-        Log(Level level = INFO) : m_LogLevel(level) {}
+    private:
+        Level m_LogLevel;
+        static Header m_ErrorHeader;
+        static Header m_WarningHeader;
+        static Header m_InfoHeader;
+        static Header m_DebugHeader;
+        static Header m_VerboseHeader;
+        static Header m_SillyHeader;
+
+    public:
+        Log(const Level& level = INFO) : m_LogLevel(level) {}
 
         static const Level ERROR = 0;
         static const Level WARNING = 1;
@@ -16,22 +26,13 @@ class Log {
         static const Level VERBOSE = 4;
         static const Level SILLY = 5;
 
-        void setLevel(Level level);
+        void setLevel(const Level& level);
         void error(const char* message);
         void warn(const char* message);
         void info(const char* message);
         void debug(const char* message);
         void verbose(const char* message);
         void silly(const char* message);
-
-    private:
-        Level m_LogLevel;
-        const char *m_ErrorHeader = "[ERROR]";
-        const char *m_WarningHeader = "[WARN]";
-        const char *m_InfoHeader = "[INFO]";
-        const char *m_DebugHeader = "[DEBUG]";
-        const char *m_VerboseHeader = "[VERBOSE]";
-        const char *m_SillyHeader = "[SILLY]";
 };
 
 void doLogs(Log *log);

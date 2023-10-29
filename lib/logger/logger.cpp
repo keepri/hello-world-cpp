@@ -3,7 +3,14 @@
 
 using namespace std;
 
-void Log::setLevel(Level level) {
+Log::Header Log::m_ErrorHeader = "[ERROR]";
+Log::Header Log::m_WarningHeader= "[WARN]";
+Log::Header Log::m_InfoHeader = "[INFO]";
+Log::Header Log::m_DebugHeader = "[DEBUG]";
+Log::Header Log::m_VerboseHeader = "[VERBOSE]";
+Log::Header Log::m_SillyHeader = "[SILLY]";
+
+void Log::setLevel(const Level& level) {
     m_LogLevel = level;
 }
 
