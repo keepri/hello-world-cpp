@@ -10,5 +10,5 @@ tm *dateNow() {
 }
 
 void sayTime(tm *date) {
-    cout << "The time is " << date->tm_hour << ":" << date->tm_min << "." << endl;
+    cout << "The time is " << date->tm_hour << ":" << date->tm_min << endl;
 }

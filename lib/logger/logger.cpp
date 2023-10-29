@@ -11,7 +11,7 @@ Log::Header Log::m_DebugHeader = "[DEBUG]";
 Log::Header Log::m_VerboseHeader = "[VERBOSE]";
 Log::Header Log::m_SillyHeader = "[SILLY]";
 
-void Log::setLevel(const Level& level) {
+void Log::setLevel(const Level level) {
     m_LogLevel = level;
 }
 

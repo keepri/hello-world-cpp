@@ -1,9 +1,9 @@
 #ifndef DATES_H
 #define DATES_H
 
-#include <iostream>
+#include <ctime>
 
-tm *dateNow();
+std::tm *dateNow();
 
 void sayTime(tm *date);
 

@@ -1,5 +1,3 @@
-#include <iostream>
-
 #include "lib/dates/dates.h"
 #include "lib/logger/logger.h"
 
@@ -9,7 +7,7 @@ int main(int argc, char *argv[]) {
     tm *date = dateNow();
     sayTime(date);
 
-    Log logger(Log::DEBUG);
+    Log logger = Log(Log::DEBUG);
     doLogs(logger);
 
     return 0;
