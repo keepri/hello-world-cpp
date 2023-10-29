@@ -7,6 +7,6 @@ std::tm *date_now();
 
 void log_time(const char *time);
 
-const char* parse_time_str(tm *date);
+char *parse_time_str(tm *date);
 
 #endif
