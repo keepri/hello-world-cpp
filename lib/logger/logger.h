@@ -6,33 +6,42 @@ class Log {
         typedef int Level;
         typedef const char* Header;
 
-        Log(const Level level = INFO) : m_LogLevel(level) {}
+        Log(const Level level = INFO) : m_log_level(level) {}
 
-        static const Level ERROR = 0;
-        static const Level WARNING = 1;
-        static const Level INFO = 2;
-        static const Level DEBUG = 3;
-        static const Level VERBOSE = 4;
-        static const Level SILLY = 5;
+        static const Level EMERG = 0;
+        static const Level ALERT = 1;
+        static const Level CRIT = 2;
+        static const Level ERROR = 3;
+        static const Level WARNING = 4;
+        static const Level NOTICE = 5;
+        static const Level INFO = 6;
+        static const Level DEBUG = 7;
+        static const Level SILLY = 8;
 
-        void setLevel(const Level level);
-        void error(const char* message);
-        void warn(const char* message);
-        void info(const char* message);
-        void debug(const char* message);
-        void verbose(const char* message);
-        void silly(const char* message);
+        const char *get_time_str();
+        void set_level(const Level level);
+        void print(const char* message, const char *header);
+        void emerg(const char *message);
+        void alert(const char *message);
+        void crit(const char *message);
+        void error(const char *message);
+        void warn(const char *message);
+        void notice(const char *message);
+        void info(const char *message);
+        void debug(const char *message);
+        void silly(const char *message);
 
     private:
-        Level m_LogLevel;
-        static Header m_ErrorHeader;
-        static Header m_WarningHeader;
-        static Header m_InfoHeader;
-        static Header m_DebugHeader;
-        static Header m_VerboseHeader;
-        static Header m_SillyHeader;
+        Level m_log_level;
+        static Header m_emerg_header;
+        static Header m_alert_header;
+        static Header m_crit_header;
+        static Header m_error_header;
+        static Header m_warning_header;
+        static Header m_notice_header;
+        static Header m_info_header;
+        static Header m_debug_header;
+        static Header m_silly_header;
 };
-
-void doLogs(Log& log);
 
 #endif

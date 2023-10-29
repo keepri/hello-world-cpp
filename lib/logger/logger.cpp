@@ -1,67 +1,84 @@
 #include <iostream>
 
+#include "../dates/dates.h"
 #include "logger.h"
 
 using namespace std;
 
-Log::Header Log::m_ErrorHeader = "[ERROR]";
-Log::Header Log::m_WarningHeader= "[WARN]";
-Log::Header Log::m_InfoHeader = "[INFO]";
-Log::Header Log::m_DebugHeader = "[DEBUG]";
-Log::Header Log::m_VerboseHeader = "[VERBOSE]";
-Log::Header Log::m_SillyHeader = "[SILLY]";
+Log::Header Log::m_emerg_header = " 🆘 [EMERGENCY] - ";
+Log::Header Log::m_alert_header = " 🚨 [ALERT] - ";
+Log::Header Log::m_crit_header = " ❗️ [CRITICAL] - ";
+Log::Header Log::m_error_header = " 🔴 [ERROR] - ";
+Log::Header Log::m_warning_header = " 🟡 [WARN] - ";
+Log::Header Log::m_info_header = " 🔵 [INFO] - ";
+Log::Header Log::m_debug_header = " 🐞 [DEBUG] - ";
+Log::Header Log::m_notice_header = " ✋ [NOTICE] - ";
+Log::Header Log::m_silly_header = " 🤪 [SILLY] - ";
 
-void Log::setLevel(const Level level) {
-    m_LogLevel = level;
+const char *Log::get_time_str() {
+    tm *now = date_now();
+    const char *time = parse_time_str(now);
+    return time;
 }
 
-void Log::error(const char* message) {
-    if (m_LogLevel >= ERROR) {
-        clog << m_ErrorHeader << " " << message << endl;
+void Log::set_level(const Level level) {
+    m_log_level = level;
+}
+
+void Log::print(const char *message, const char *header) {
+    clog << Log::get_time_str() << header << message << endl;
+}
+
+void Log::emerg(const char *message) {
+    if (m_log_level >= EMERG) {
+        Log::print(message, m_emerg_header);
     }
 }
 
-void Log::warn(const char* message) {
-    if (m_LogLevel >= WARNING) {
-        clog << m_WarningHeader << " " << message << endl;
+void Log::alert(const char *message) {
+    if (m_log_level >= ALERT) {
+        Log::print(message, m_alert_header);
     }
 }
 
-void Log::info(const char* message) {
-    if (m_LogLevel >= INFO) {
-        clog << m_InfoHeader << " " << message << endl;
+void Log::crit(const char *message) {
+    if (m_log_level >= CRIT) {
+        Log::print(message, m_crit_header);
     }
 }
 
-void Log::debug(const char* message) {
-    if (m_LogLevel >= DEBUG) {
-        clog << m_DebugHeader << " " << message << endl;
+void Log::error(const char *message) {
+    if (m_log_level >= ERROR) {
+        Log::print(message, m_error_header);
     }
 }
 
-void Log::verbose(const char* message) {
-    if (m_LogLevel >= VERBOSE) {
-        clog << m_VerboseHeader << " " << message << endl;
+void Log::warn(const char *message) {
+    if (m_log_level >= WARNING) {
+        Log::print(message, m_warning_header);
     }
 }
 
-void Log::silly(const char* message) {
-    if (m_LogLevel >= SILLY) {
-        clog << m_SillyHeader << " " << message << endl;
+void Log::notice(const char *message) {
+    if (m_log_level >= NOTICE) {
+        Log::print(message, m_notice_header);
     }
 }
 
-void doLogs(Log& log) {
-    log.info("Hello, world!");
-
-    int a = atoi("1");
-    if (a == 1) {
-        log.debug("Atoi is 1");
+void Log::info(const char *message) {
+    if (m_log_level >= INFO) {
+        Log::print(message, m_info_header);
     }
+}
 
-    if (strcmp("1", "2") == 0) {
-        log.debug("Equal.");
-    } else {
-        log.debug("Not equal!");
+void Log::debug(const char *message) {
+    if (m_log_level >= DEBUG) {
+        Log::print(message, m_debug_header);
+    }
+}
+
+void Log::silly(const char *message) {
+    if (m_log_level >= SILLY) {
+        Log::print(message, m_silly_header);
     }
 }

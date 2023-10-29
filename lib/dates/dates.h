@@ -3,8 +3,10 @@
 
 #include <ctime>
 
-std::tm *dateNow();
+std::tm *date_now();
 
-void sayTime(tm *date);
+void log_time(const char *time);
+
+const char* parse_time_str(tm *date);
 
 #endif
