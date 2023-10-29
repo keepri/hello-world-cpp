@@ -35,6 +35,6 @@ class Log {
         void silly(const char* message);
 };
 
-void doLogs(Log *log);
+void doLogs(Log& log);
 
 #endif

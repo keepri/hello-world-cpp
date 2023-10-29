@@ -50,17 +50,17 @@ void Log::silly(const char* message) {
     }
 }
 
-void doLogs(Log *log) {
-    log->info("Hello, world!");
+void doLogs(Log& log) {
+    log.info("Hello, world!");
 
     int a = atoi("1");
     if (a == 1) {
-        log->debug("Atoi is 1");
+        log.debug("Atoi is 1");
     }
 
     if (strcmp("1", "2") == 0) {
-        log->debug("Equal.");
+        log.debug("Equal.");
     } else {
-        log->debug("Not equal!");
+        log.debug("Not equal!");
     }
 }

@@ -10,7 +10,7 @@ int main(int argc, char *argv[]) {
     sayTime(date);
 
     Log logger(Log::DEBUG);
-    doLogs(&logger);
+    doLogs(logger);
 
     return 0;
 }
