@@ -1,5 +1,7 @@
 #include <iostream>
 
+#include "dates.h"
+
 using namespace std;
 
 tm *dateNow() {
