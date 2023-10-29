@@ -10,8 +10,8 @@ int main(int argc, char *argv[]) {
     const char *time = parse_time_str(date);
     log_time(time);
 
-    Log logger(Log::INFO);
-    logger.info("Hello, world!");
+    Log& log = Log::get();
+    log.info("Hello, world!");
 
     return 0;
 }
