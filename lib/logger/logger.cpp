@@ -10,9 +10,9 @@ Log::Header Log::m_alert_header = " 🚨 [ALERT] - ";
 Log::Header Log::m_crit_header = " ❗️ [CRITICAL] - ";
 Log::Header Log::m_error_header = " 🔴 [ERROR] - ";
 Log::Header Log::m_warning_header = " 🟡 [WARN] - ";
+Log::Header Log::m_notice_header = " ✋ [NOTICE] - ";
 Log::Header Log::m_info_header = " 🔵 [INFO] - ";
 Log::Header Log::m_debug_header = " 🐞 [DEBUG] - ";
-Log::Header Log::m_notice_header = " ✋ [NOTICE] - ";
 Log::Header Log::m_silly_header = " 🤪 [SILLY] - ";
 
 const char *Log::get_time_str() {
