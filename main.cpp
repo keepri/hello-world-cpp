@@ -6,12 +6,8 @@
 using namespace std;
 
 int main(int argc, char *argv[]) {
-    tm *date = date_now();
-    const char *time = parse_time_str(date);
-    log_time(time);
+    log_time(get_time_str());
 
-    Log& log = Log::get();
-    log.info("Hello, world!");
-
+    Log::get().set_level(Log::SILLY).silly("Lets go!");
     return 0;
 }
