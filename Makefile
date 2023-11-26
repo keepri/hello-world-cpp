@@ -1,27 +1,13 @@
-default: compile-dates compile-logger
+default:
 	make build && \
 		rm -rf *.o && \
 		./hello_world
-
-compile-dates:
-	clang++ \
-		-g \
-		-std=c++20 \
-		-c lib/dates/dates.cpp \
-		-o dates.o
-
-compile-logger:
-	clang++ \
-		-g \
-		-std=c++20 \
-		-c lib/logger/logger.cpp \
-		-o logger.o
 
 build:
 	clang++ \
 		-g \
 		-std=c++20 \
-		main.cpp *.o \
+		main.cpp \
 		-o hello_world
 
 clean:
